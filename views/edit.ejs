@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="page1">
+        <h1>
+            <%= post.username %>
+        </h1>
+        <p>
+            <%= post.id %>
+        </p>
+
+        <form method="post" action="http://localhost:8080/posts/<%=post.id %>?_method=PATCH" >
+            <h3 style=" text-align: center;">new content here</h3>
+            <textarea placeholder="old content : <%= post.content%>" name="content" id="" cols="30"
+                rows="10"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

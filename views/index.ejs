@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Quora posts</title>
+</head>
+
+<body>
+    <div class="page1">
+
+        <h1>Quora posts</h1>
+        <% for( post of posts) {%>
+            <div class="post">
+                <h3 class="user">
+                    @<%= post.username %>
+                </h3>
+                <p class="des">
+                    <%= post.content %>
+                </p>
+                <form style="width: 10% ;" action="http://localhost:8080/posts/<%= post.id %>/likes?_method=PATCH"
+                    method="post">
+                    <button style="background-color: salmon;" type="submit"> <i class="fa-solid fa-heart"></i> <%=post.likes%> </button>
+                </form>
+
+                <br><br>
+                <div class="buttons">
+                
+                    <button> <a href="/posts/<%=post.id %>"> <i class="fa-regular fa-share-from-square"></i> See full
+                            post </a></button>
+                    <button> <a href="/posts/<%=post.id %>/edit"> <i class="fa-regular fa-share-from-square"></i> Edit
+                            post </a></button>
+                    <form style="width: 10%;" action="http://localhost:8080/posts/<%= post.id %>/delete?_method=DELETE"
+                        method="post">
+                        <button type="submit"> <i class="fa-solid fa-trash"></i> </button>
+                    </form>
+                </div>
+
+
+            </div>
+            <% } %>
+                <div class="new">
+                    <a href="/posts/new"> <i class="fas fa-plus"></i> New post</a>
+                </div>
+
+    </div>
+
+</body>
+
+</html>
